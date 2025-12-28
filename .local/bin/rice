@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+FOLDER=~/Pictures/Wallpapers # wallpaper folder
+
+menu () {
+	CHOICE=$(ls $FOLDER/*.jpg | nsxiv -tio)
+
+	echo "CHOICE: $CHOICE"
+	scripts $CHOICE
+}
+
+# other wal scripts HERE
+scripts () {
+	image=$1
+
+	wal -i "$image"
+
+	i3 restart
+
+	flatpak run com.github.themix_project.Oomox
+	#gsettings set org.gnome.desktop.interface gtk-theme oomox-colors-oomox
+	#printf "[Settings]\ngtk-theme-name = oomox-colors-oomox\ngtk-icon-theme-name = oomox-colors-oomox" > ~/.config/gtk-3.0/dunstrc
+}
+
+# if no arguments, open nsxiv menu. if 1 argument, use that as the wal wallpaper.
+
+case "$#" in
+		0) menu ;;
+		1) scripts "$1" ;;
+		*) exit 0 ;;
+esac

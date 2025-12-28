@@ -1,0 +1,7 @@
+#include "/home/fausto/.cache/wal/colors.Xresources"
+
+*.font: xft:monospace:size=12
+XTerm*selectToClipboard: true
+*.vt100.metaSendsEscape: true
+*.vt100.backarrowKey: false
+*.ttyModes: erase ^?
